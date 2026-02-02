@@ -4,11 +4,13 @@
 **Pipeline automatisé** pour identifier et prédire la structure de complexes protéine-ligand.
 
 Le pipeline suit ces étapes principales :  
-1. BLAST pour identifier les séquences homologues.  
-2. Prédiction des structures protéine-ligand avec Boltz-2.  
-3. Identification des interactions protéine-ligand avec PLIP.  
-4. Visualisation des résultats de PLIP sur PyMOL
----
+1. BLAST pour identifier les séquences homologues : `[PATH]\Boltzflow\blastp_results`
+2. Prédiction des structures protéine-ligand avec Boltz-2 : `[PATH]\Boltzflow\boltz_results`
+3. Identification des interactions protéine-ligand avec PLIP :
+     - Exemple de résultats pour le hit '4W6Z' : `[PATH]\Boltzflow\boltz_results\4W6Z_NAD\predictions\plip_results_model_[0-4]\` 
+5. Visualisation des résultats de PLIP en fichier xml, txt et session PyMOL :
+     - Pymol: `RESULT_MODEL_1_PROTEIN_LIG_B_1.pse`
+     - XML ou TXT: `result_model_1_report(.xml/.txt)`
 
 ## Pipeline Workflow
 ```mermaid
@@ -63,3 +65,5 @@ constraints:
 - Stocker les résultats dans une base de données structurée pour analyses ultérieures.
 - Étendre le calcul des descripteurs à des dynamiques moléculaires pour capturer la flexibilité du complexe et de la poche : avec GROMACS (nécessitera un workflow à part)
 - Remplacer BlastP par FoldSeek afin d'obtenir directement des structures prédites ou non à partir de la query
+
+...
