@@ -1,0 +1,25 @@
+# =================================================================== #
+# Fichier de configuration pour Snakemake workflow BLAST + Boltz-2
+# =================================================================== #
+
+input:
+  fasta_file: "data/P00330.fasta"
+  ligand_file: "data/NAD_smiles.txt"
+
+directories:
+  blastp_results: "blastp_results"
+  hits_yaml: "hits_yaml"
+  boltz_results: "boltz_results"
+
+blast:
+  max_targets: 10
+  evalue: 1e-5
+  database: "nr"
+
+boltz:
+  accelerator: "cpu"
+  use_msa_server: true
+  use_potentials: true
+  output_format: "pdb"
+  recycling_steps: 5     # À augmenter pour meilleurs résultats (10 recommandé)
+  diffusion_samples: 15  # À augmenter pour meilleurs résultats (25 recommandé)
