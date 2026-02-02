@@ -21,7 +21,7 @@ flowchart TD
     B --> |hit_sequences.fasta| C[Convert Hits to YAML for Boltz-2]
     C --> |protein_ligand.yaml| D[Boltz-2: Protein-Ligand Structure Prediction]
     D --> |result_model_1-5.pdb| E[PLIP: Protein-Ligand Interaction Profiler]
-    E --> F[Visualization in PyMOL]
+    E --> |RESULT_MODEL_1-5.pse| F[Visualization in PyMOL]
 ```
 
 ## Usages
