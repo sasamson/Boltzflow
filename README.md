@@ -15,23 +15,6 @@ Le pipeline suit ces étapes principales :
 ## Pipeline Workflow
 ```mermaid
 flowchart TD
-<<<<<<< HEAD
-    A[Input: Protein FASTA & Ligand(s)] --> B[BLAST Search];
-    B --> C[Extract Top 10 Hits];
-    C --> D[Convert Hits to YAML for Boltz-2];
-    D --> E[Boltz-2: Protein-Ligand Structure Prediction];
-    E --> F[Compute Key Catalytic Descriptors];
-    F --> G[Rank Candidate Hits];
-    G --> H[Output: Ranked Candidate List]
-
-    graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-    C-->E;
-    E-->F;
-=======
     A[BLASTP Search]
     P[Protein FASTA] --> A
     L[Ligand SMILES] --> A
@@ -41,7 +24,6 @@ flowchart TD
     C --> |protein_ligand.yaml| D[Boltz-2: Protein-Ligand Structure Prediction]
     D --> |result_model_1-5.pdb| E[PLIP: Protein-Ligand Interaction Profiler]
     E --> |RESULT_MODEL_1-5.pse| F[Visualization in PyMOL]
->>>>>>> 8457a106c75e2de2c825f81137860c0b4a826da5
 ```
 
 ## Usages
