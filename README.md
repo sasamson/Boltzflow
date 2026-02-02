@@ -14,11 +14,18 @@ Le pipeline suit ces étapes principales :
 ## Pipeline Workflow
 ```mermaid
 flowchart TD
-    A[Input: Protein FASTA & Ligand(s)] --> B[BLAST Search];
+    A(Input: Protein FASTA & Ligand) --> B[BLASTP Search];
     B --> C[Extract Top 10 Hits];
     C --> D[Convert Hits to YAML for Boltz-2];
     D --> E[Boltz-2: Protein-Ligand Structure Prediction];
-    E --> F[Compute Key Catalytic Descriptors];
-    F --> G[Rank Candidate Hits];
-    G --> H[Output: Ranked Candidate List]
+    E --> F[PLIP: Protein-Ligand Interaction Profiler];
+    F --> G(Vizualisation on PyMOL)
+
+    graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+    C-->E;
+    E-->F;
 ```
