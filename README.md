@@ -14,23 +14,11 @@ Le pipeline suit ces étapes principales :
 ## Pipeline Workflow
 ```mermaid
 flowchart TD
-    A[Input: Protein FASTA & Ligand(s)] --> B[BLAST Search]
-    B --> C[Extract Top 10 Hits]
-    C --> D[Convert Hits to YAML for Boltz-2]
-    D --> E[Boltz-2: Protein-Ligand Structure Prediction]
-    E --> F[Compute Key Catalytic Descriptors]
-    F --> G[Rank Candidate Hits]
+    A[Input: Protein FASTA & Ligand(s)] --> B[BLAST Search];
+    B --> C[Extract Top 10 Hits];
+    C --> D[Convert Hits to YAML for Boltz-2];
+    D --> E[Boltz-2: Protein-Ligand Structure Prediction];
+    E --> F[Compute Key Catalytic Descriptors];
+    F --> G[Rank Candidate Hits];
     G --> H[Output: Ranked Candidate List]
-
-    %% Optional improvement nodes
-    subgraph Improvements
-        I[Automate candidate selection with ML scoring]
-        J[Integrate docking step]
-        K[GPU acceleration for Boltz-2]
-        L[Add quality checks on predicted structures]
-        M[Store results in structured database]
-        N[Include molecular dynamics descriptors]
-    end
-
-    G --> Improvements
 ```
