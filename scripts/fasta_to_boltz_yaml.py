@@ -47,12 +47,12 @@ def write_yaml(seq, smiles, output_file):
         # Ligand (optional)
         if smiles:
             f.write(f"  - ligand:\n")
-            f.write(f"      id: L\n")
+            f.write(f"      id: B\n")
             f.write(f"      smiles: {smiles}\n")
         # Complexes (enable affinity)
             f.write("properties:\n")
             f.write(f"  - affinity:\n")
-            f.write(f"      binder: L\n")
+            f.write(f"      binder: B\n")
         
 
 def fasta_to_boltz_yaml(fasta_file, ligand_file=None, output_dir=None, verbose=True):

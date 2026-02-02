@@ -15,9 +15,9 @@ set -euo pipefail  # Si erreur, sortir immédiatement
 
 FASTA_FILE="./data/P00330.fasta"
 LIGAND_FILE="./data/NAD_smiles.txt"
-HITS_FASTA=""
 MAX_TARGETS=10
 BLASTP_DIR="./blastp_results"
+HITS_FASTA="./blastp_results/hit_sequences.fasta"
 HITS_DIR="./hits_yalm"
 BOLTZ_DIR="./boltz_results"
 
@@ -33,7 +33,7 @@ if [[ ! -f "$LIGAND_FILE" ]]; then
 fi
 
 # 0. Setup des répertoires de résultats.
-mkdir -p "$BLASTP_DIR" "$HITS_DIR" "$BOLTZ_DIR"
+mkdir -p "$BLASTP_DIR" "$HITS_DIR" "$BOLTZ_DIR" "$PLIP_DIR"
 
 echo "=== Étape 1: BLASTP ==="
 # Lance BLASTP bases de données distantes de NCBI et extrait les 10 premiers hits.
@@ -68,8 +68,17 @@ echo -e "\n=== Étape 3: Prédiction de structure avec Boltz-2 ==="
 # Lancer Boltz-2 pour la prédiction des complexes protéine-ligand.
 boltz predict "./$HITS_DIR/" --use_msa_server --use_potentials --output_format pdb --accelerator cpu --out_dir "./$BOLTZ_DIR"
 # Meilleures predictions avec les options : --recycling_steps 10 --diffusion_samples 25 --> /!\ plus long à exécuter
-# Erreur : ValueError: CCD component ASP not found!
-# Solution : retélécharger mols.tar sur https://huggingface.co/boltz-community/boltz-2/blob/main/mols.tar et le décompresser dans le dossier cache .boltz
+
+echo -e "\n=== Étape 4:  ==="
+# Lancer PLIP pour l'analyse des interactions protéine-ligand.
+for dir in $BOLTZ_DIR/*/ ;
+do
+    i=0
+    for file in $(find $dir -name 'result_model_*.pdb') ;
+    do
+        plip -f "$file" -xty -o "$dir/predictions/plip_results_model_$i"
+        ((i++))
+    done
+done
 
 echo -e "\n=== Pipeline terminé! ==="
-echo "Résultats dans: $BOLTZ_DIR/predictions/"

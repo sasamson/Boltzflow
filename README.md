@@ -21,4 +21,12 @@ flowchart TD
     E --> F[Compute Key Catalytic Descriptors];
     F --> G[Rank Candidate Hits];
     G --> H[Output: Ranked Candidate List]
+
+    graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+    C-->E;
+    E-->F;
 ```
