@@ -25,7 +25,7 @@ flowchart TD
 ```
 
 ## Usages
-**Snakemake**
+**Snakemake** (quelques soucis techniques avec Boltz et PLIP)
 ```
 conda activate snakemake
 cd Boltzflow/
