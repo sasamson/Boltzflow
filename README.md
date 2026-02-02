@@ -41,7 +41,7 @@ cd Boltzflow/
 bash bash_worflow.sh
 ```
 ## Résultats
-* Séquence query : `data/P00330.fasta` : Alcohol dehydrogenase 1 de Saccharomyces cerevisiae (strain ATCC 204508 / S288c) - Code Uniprot : [P00330](https://www.uniprot.org/uniprotkb/P00330/entry)
+* Séquence query : `data/P00330.fasta` : Alcohol dehydrogenase 1 de Saccharomyces cerevisiae - Code Uniprot : [P00330](https://www.uniprot.org/uniprotkb/P00330/entry)
 * Son ligand : `data/NAD_smiles.txt` : NAD (Nicotineamide-Adenine-Dinucleotide) - ID PDB du complexe : [5ENV](https://www.rcsb.org/structure/5ENV)
 * Les 10 hits homologues identifiés par BlastP : `blastp_results/blastp_results.tsv` : 
 
