@@ -56,7 +56,7 @@ snakemake --use-conda --cores 8
 conda env create -f envs/boltz.yaml
 conda activate boltz
 cd Boltzflow/
-bash Snakefile.sh
+bash bash_worflow.sh
 ```
 
 ## Problèmes rencontrés
